@@ -1,9 +1,9 @@
-import { useNavigate,Link, redirect } from "react-router-dom";
+import { useNavigate,Link} from "react-router-dom";
 import { useEffect, useState } from "react";
 import swal from '@sweetalert/with-react'
 import axios from "axios";
 
-const Listado = () => {
+const Listado = ({addOrRemove}) => {
   const navigate = useNavigate();
   
   const [movieList, setmovieList] = useState([]);
@@ -11,13 +11,7 @@ const Listado = () => {
   let token = sessionStorage.getItem("token");
 
   console.log (token);
-  /*useEffect(() => {
-    
-    if (!token) {
-      navigate("/");
-    }
-  }, []);*/
-
+ 
   useEffect(() => {
     const endPoint = "https://api.themoviedb.org/3/discover/movie?api_key=c7be01a86fd8912720fa05d1dec010a7&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate"
     
@@ -46,6 +40,7 @@ const Listado = () => {
       <div className="col-3 border d-flex">
         <div className="card container">
           <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className="card-img-top" alt="..." />
+          <button onClick={addOrRemove} dataMovieId={movie.id} className="favorite-btn">♡</button>
           <div className="card-body">
             <h5 className="card-title">{movie.title}</h5>
             <p className="card-text">
