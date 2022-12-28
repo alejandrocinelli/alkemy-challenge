@@ -28,19 +28,11 @@ const Buscador = () => {
     }
   return (
     <div>
-     
-      <form onSubmit={handlerSubmit}>
-        <label htmlFor="text">
-        <input
-            type="text"
-            name="keyword"
-            
-          />
-         
-        </label>
-       
-        <button type="submit">Buscar</button>
-      </form>
+    
+      <form className="d-flex" onSubmit={handlerSubmit}>
+      <input className="form-control me-2" name="keyword" type="text" placeholder="Nombre de pelicula" />
+      <button className="btn btn-outline-primary" type="submit">Buscar</button>
+    </form>
     </div>
   );
 };

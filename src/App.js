@@ -13,6 +13,16 @@ function App() {
   //funcion para sumar favoritos... esto deberia hacerlo en un contexto, pero para el 
   //ejemplo lo hago aca
 
+  const favoritos = localStorage.getItem('favoritos');
+  let tempMoviesFav ;
+  if(favoritos === null){
+    tempMoviesFav = [];
+   } 
+    else{
+      tempMoviesFav = JSON.parse(favoritos);
+    }
+
+
   const addOrRemove = (e) => {
    const btn = e.currentTarget;
    const parent = btn.parentElement;
@@ -22,11 +32,26 @@ function App() {
    const id = parent.querySelector('button').getAttribute('dataMovieId');
      
    const movieData = { imgUrl, title, overview, id };
-   console.log(movieData);
+  
+   let movieIsInFav = tempMoviesFav.find(movie => movie.id === movieData.id);
+   
+   if(!movieIsInFav){
+      tempMoviesFav.push(movieData);
+      localStorage.setItem('favoritos', JSON.stringify(tempMoviesFav));
+      console.log('producto agregado a favoritos');
+   }
+   else{
+      tempMoviesFav = tempMoviesFav.filter(movie => movie.id !== movieData.id);
+      localStorage.setItem('favoritos', JSON.stringify(tempMoviesFav));
+      console.log('producto eliminado de favoritos');
+   }
+   
+   console.log(localStorage.getItem('favoritos'));
+   
  }
 
   return (
-    <div className="">
+    <div className="container">
       <BrowserRouter>
       <Header/>
       <Routes>

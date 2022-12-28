@@ -3,16 +3,31 @@ import Buscador from "./Buscador"
 
 const Header = () => {
   return (
-    <header className="">
-        <nav className=""> 
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/listado">Listado</Link></li>
-                <li>Contacto</li>
+    <>
+<header className="">
+        <nav className="navbar-light "> 
+        <div className="d-flex">
+          <div>
+            <ul className="nav">
+                <li className="nav-item"><Link to="/" className="nav-link" >Home</Link></li>
+                <li className="nav-item"><Link to="/listado" className="nav-link">Listado</Link></li>
+                <li className="nav-item"><Link className="nav-link">Contacto </Link></li>
+                
             </ul>
-            <Buscador />
+          </div>
+          
+            <Buscador className=""/>
+        </div>
+            
          </nav>
     </header>
+
+
+
+
+     </>
+    
+   
   )
 }
 export default Header
