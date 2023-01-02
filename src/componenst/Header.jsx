@@ -1,30 +1,14 @@
-import {Link } from "react-router-dom"
-import Buscador from "./Buscador" 
+import React from 'react'
+import MyNavbar from "./MyNavbar"
 
 const Header = () => {
   return (
     <>
-<header className="">
-        <nav className="navbar-light "> 
-        <div className="d-flex">
-          <div>
-            <ul className="nav">
-                <li className="nav-item"><Link to="/" className="nav-link" >Home</Link></li>
-                <li className="nav-item"><Link to="/listado" className="nav-link">Listado</Link></li>
-                <li className="nav-item"><Link className="nav-link">Contacto </Link></li>
-                
-            </ul>
-          </div>
-          
-            <Buscador className=""/>
-        </div>
-            
-         </nav>
-    </header>
-
-
-
-
+  <div className=''>
+    <MyNavbar/>
+  </div>
+   
+    
      </>
     
    

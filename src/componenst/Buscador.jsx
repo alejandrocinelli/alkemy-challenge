@@ -27,11 +27,11 @@ const Buscador = () => {
         }
     }
   return (
-    <div>
+    <div className="">
     
-      <form className="d-flex" onSubmit={handlerSubmit}>
-      <input className="form-control me-2" name="keyword" type="text" placeholder="Nombre de pelicula" />
-      <button className="btn btn-outline-primary" type="submit">Buscar</button>
+      <form className="d-flex justify-content-end" onSubmit={handlerSubmit}  >
+      <input className="form-control me-2" name="keyword"  type="text" placeholder="" />
+      <button className="btn btn-outline-primary border-0" type="submit">Buscar</button>
     </form>
     </div>
   );

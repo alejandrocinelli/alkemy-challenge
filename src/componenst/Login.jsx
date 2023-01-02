@@ -45,12 +45,12 @@ const Login = () => {
 
   return (
     <>
-<form onSubmit={submitHandler}>
-  <div className="mb-3">
+<form className=' w-50 mx-auto' onSubmit={submitHandler}>
+  <div className="mb-3 form-group ">
     <label for="exampleInputEmail1" className="form-label">Email address</label>
     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
      onChange={(e) => setEmail(e.target.value)}/>
-    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+    <div id="emailHelp" className="form-text">ingresa: challenge@alkemy.org y pass: react .</div>
   </div>
   <div className="mb-3">
     <label for="exampleInputPassword1" className="form-label">Password</label>

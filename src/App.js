@@ -7,6 +7,7 @@ import'./css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Detalle from "./componenst/Detalle";
 import Resultados from "./componenst/Resultados";
+import Favoritos from "./componenst/Favoritos";
 
 function App() {
   
@@ -51,7 +52,7 @@ function App() {
  }
 
   return (
-    <div className="container">
+    <div className="container-fluid ">
       <BrowserRouter>
       <Header/>
       <Routes>
@@ -59,6 +60,7 @@ function App() {
       <Route path="/listado" element={<Listado addOrRemove={addOrRemove}/>}/>
       <Route path="/detalle" element={<Detalle/>}/>
       <Route path="/resultados" element={<Resultados/>}/>
+      <Route path="/favoritos" element={<Favoritos addOrRemove={addOrRemove}/>}/>
      
      </Routes>
      <Footer/>
