@@ -16,7 +16,7 @@ const Buscador = () => {
       swal(<h3> Debes escribir algo para buscar </h3>) 
        }
        else if (keyword.length < 3) {
-        swal(<h3> debes escribir mas de 3 caracteres</h3>)
+        swal(<h3> Debes escribir mas de 3 caracteres</h3>)
        }
         else {
           e.currentTarget.keyword.value = "";

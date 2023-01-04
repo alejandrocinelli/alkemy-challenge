@@ -1,11 +1,11 @@
 import React from 'react'
 import MyNavbar from "./MyNavbar"
 
-const Header = () => {
+const Header = (favoritos) => {
   return (
     <>
-  <div className=''>
-    <MyNavbar/>
+  <div className="">
+    <MyNavbar favoritos={favoritos}/>
   </div>
    
     

@@ -3,8 +3,12 @@ import { useEffect, useState } from "react";
 import swal from '@sweetalert/with-react'
 import axios from "axios";
 import { Col, Row } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+
 
 const Listado = ({addOrRemove}) => {
+
   const navigate = useNavigate();
   
   const [movieList, setmovieList] = useState([]);
@@ -36,20 +40,14 @@ const Listado = ({addOrRemove}) => {
     
   <h2>Listado de Peliculas</h2>
     
-  <Row className="justify-content-center">
-      {movieList.map((movie) => {
-        return (
-          <Col key={movie.id} className="mx-auto" xl={2} md={4} lg={3} sm={5} mt={3} mb={3}>
-            <div className="card">
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                className="card-img-top"
-                alt="..."
-              />
+  <Row xs={1} md={1} sm={1} className="g-4 mt-2 m-5 justify-content-center ">
+          {movieList.map((movie) => (
+            <Card style={{ width: "18rem" }} className="m-2" key={movie.id}>
+              <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className="mt-2" />
               <button
-                onClick={addOrRemove}
-                dataMovieId={movie.id}
-                className="favorite-btn"
+               onClick={addOrRemove}
+               dataMovieId={movie.id}
+                className="favorite-btn2"
               >
                 ♡
               </button>
@@ -65,12 +63,9 @@ const Listado = ({addOrRemove}) => {
                   More Info
                 </Link>
               </div>
-            </div>
-          </Col>
-        );
-      })}
-    </Row>
-  ;
+            </Card>
+          ))}
+        </Row>
 
   </>);
 };

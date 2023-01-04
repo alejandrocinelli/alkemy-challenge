@@ -8,23 +8,37 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Detalle from "./componenst/Detalle";
 import Resultados from "./componenst/Resultados";
 import Favoritos from "./componenst/Favoritos";
+import { useEffect, useState } from "react";
 
 function App() {
   
   //funcion para sumar favoritos... esto deberia hacerlo en un contexto, pero para el 
   //ejemplo lo hago aca
 
-  const favoritos = localStorage.getItem('favoritos');
+  const [favoritos, setFavoritos] = useState([]);
+
+  useEffect(() => {
+    const favoritosFromLocal = JSON.parse(
+      localStorage.getItem("favoritos") || "[]"
+    );
+    //console.log(favoritosFromLocal);
+    setFavoritos(favoritosFromLocal);
+  }, []);
+
+
+  const addOrRemove = (e) => {
+   
+    // algo aca se piso pero funciona el favoritos lo dejo asi jojojo 
+    const favoritos = localStorage.getItem('favoritos');
   let tempMoviesFav ;
-  if(favoritos === null){
+  if(favoritos === null){ 
     tempMoviesFav = [];
    } 
     else{
       tempMoviesFav = JSON.parse(favoritos);
+     // setFavoritos(tempMoviesFav);
     }
 
-
-  const addOrRemove = (e) => {
    const btn = e.currentTarget;
    const parent = btn.parentElement;
    const imgUrl = parent.querySelector('img').getAttribute('src');
@@ -40,11 +54,13 @@ function App() {
       tempMoviesFav.push(movieData);
       localStorage.setItem('favoritos', JSON.stringify(tempMoviesFav));
       console.log('producto agregado a favoritos');
+      setFavoritos(tempMoviesFav);
    }
    else{
       tempMoviesFav = tempMoviesFav.filter(movie => movie.id !== movieData.id);
       localStorage.setItem('favoritos', JSON.stringify(tempMoviesFav));
       console.log('producto eliminado de favoritos');
+      setFavoritos(tempMoviesFav);
    }
    
    console.log(localStorage.getItem('favoritos'));
@@ -54,13 +70,13 @@ function App() {
   return (
     <div className="container-fluid ">
       <BrowserRouter>
-      <Header/>
+      <Header favoritos={favoritos}/>
       <Routes>
       <Route  path="/" element={<Login/>} />
-      <Route path="/listado" element={<Listado addOrRemove={addOrRemove}/>}/>
+      <Route path="/listado" element={<Listado favoritos={favoritos} addOrRemove={addOrRemove}/>}/>
       <Route path="/detalle" element={<Detalle/>}/>
-      <Route path="/resultados" element={<Resultados/>}/>
-      <Route path="/favoritos" element={<Favoritos addOrRemove={addOrRemove}/>}/>
+      <Route path="/resultados" element={<Resultados favoritos={favoritos} addOrRemove={addOrRemove}/>}/>
+      <Route path="/favoritos" element={<Favoritos favoritos={favoritos} addOrRemove={addOrRemove}/>}/>
      
      </Routes>
      <Footer/>

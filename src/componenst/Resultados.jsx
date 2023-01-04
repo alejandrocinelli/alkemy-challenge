@@ -2,13 +2,16 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import swal from '@sweetalert/with-react'
 import { useEffect, useState } from "react";
+import { Row } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
 
-const Resultados = () => {
+
+const Resultados = ({addOrRemove}) => {
    
    const [movieResult , setmovieResult] = useState([]);
    let query = new URLSearchParams(window.location.search);
    let keyword = query.get("keyword");
-   console.log(keyword+" desde Resultados")
+   //console.log(keyword+" desde Resultados")
    
    
 useEffect(() => {
@@ -32,31 +35,34 @@ useEffect(() => {
   return (
     <>
     <div>Resultados para {keyword}</div>
-    <br/>
+   
     {movieResult === 0 && <h4> No se encontraron resultados </h4>}
-    <div className="row">
-    {movieResult.map (movie =>  {
-      return (
-    <div key={movie.id} className="">
-      <div className="col-4">
-        <div className="card my-2 ">
-          <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className="card-img-top" alt="..." />
-          <div className="card-body">
-            <h5 className="card-title">{movie.title}</h5>
-            <p className="card-text">
-              {movie.overview.substring(0, 100)}...
-            </p>
-            <Link to={`/detalle?movieId=${movie.id}`} className="btn btn-primary">
-              More Info 
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-      )
-    })}
-    </div>
+    <Row xs={1} md={1} sm={1} className="g-4 mt-2 m-5 justify-content-center ">
+          {movieResult.map((movie) => (
+            <Card style={{ width: "18rem" }} className="m-2" key={movie.id} > 
+              <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className="mt-2" />
+              <button
+               onClick={addOrRemove}
+               dataMovieId={movie.id}
+                className="favorite-btn2"
+              >
+                ♡
+              </button>
+              <div className="card-body">
+                <h5 className="card-title">{movie.title}</h5>
+                <p className="card-text">
+                  {movie.overview.substring(0, 100)}...
+                </p>
+                <Link
+                  to={`/detalle?movieId=${movie.id}`}
+                  className="btn btn-primary"
+                >
+                  More Info
+                </Link>
+              </div>
+            </Card>
+          ))}
+        </Row>
 
    </>
   )

@@ -4,9 +4,12 @@ import {Link } from "react-router-dom"
 import Buscador from "./Buscador";
 import  "../css/MyNavBar.css"
 
-function MyNavbar() {
+function MyNavbar({favoritos}) {
+
+  
+
   return (
-    <Navbar expand="sm" variant="light" bg="light" >
+    <Navbar expand="sm" variant="light" bg="light" className="" >
       <Navbar.Brand aria-controls="basic"> </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -14,6 +17,9 @@ function MyNavbar() {
           <Nav.Link id="MyNavBar" ><Link className="MyNavBar" to="/">Inicio</Link></Nav.Link>
           <Nav.Link><Link className="MyNavBar" to="/listado">Listado</Link></Nav.Link>
           <Nav.Link><Link className="MyNavBar" to="/favoritos">Favoritos</Link></Nav.Link>
+          <Nav.Link> 
+             {favoritos.favoritos.length > 0 ? (<p>{favoritos.favoritos.length}</p> ) : (null) } 
+          </Nav.Link>
           <Buscador className=""/>
         </Nav>
       </Navbar.Collapse>
