@@ -9,17 +9,17 @@ function MyNavbar({favoritos}) {
   
 
   return (
-    <Navbar expand="sm" variant="light" bg="light" className="" >
+    <Navbar expand="sm" variant="light" bg="light"  className="p-3" >
       <Navbar.Brand aria-controls="basic"> </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link id="MyNavBar" ><Link className="MyNavBar" to="/">Inicio</Link></Nav.Link>
-          <Nav.Link><Link className="MyNavBar" to="/listado">Listado</Link></Nav.Link>
-          <Nav.Link><Link className="MyNavBar" to="/favoritos">Favoritos</Link></Nav.Link>
-          <Nav.Link> 
-             {favoritos.favoritos.length > 0 ? (<p>{favoritos.favoritos.length}</p> ) : (null) } 
-          </Nav.Link>
+          <Link className="MyNavBar" to="/">Inicio</Link>
+          <Link className="MyNavBar" to="/listado">Listado</Link>
+          <Link className="MyNavBar" to="/favoritos">Favoritos</Link>
+          <Link className="MyNavBar" to="/favoritos" variant="light" style={{ color: '#AF7AC5 ' }}> 
+            <span className="MyNavBar">{favoritos.favoritos.length > 0 ? (<>{favoritos.favoritos.length}</> ) : (null) } </span>  
+          </Link>
           <Buscador className=""/>
         </Nav>
       </Navbar.Collapse>

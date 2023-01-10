@@ -15,7 +15,7 @@ const Detalle = () => {
         axios.get(url).then(res => {
             const dataApi = res.data;
             setmovieDetail(dataApi);
-            console.log(dataApi)
+            //console.log(dataApi)
         }).catch(err => {
             console.log(err)
         })

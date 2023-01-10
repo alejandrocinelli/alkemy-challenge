@@ -1,3 +1,10 @@
+#appCss {
+    margin: 0px;
+    padding: 0px;
+    background-color: #ffffff;
+    
+}
+
 
 .favorite-btn {
    width: 30px;

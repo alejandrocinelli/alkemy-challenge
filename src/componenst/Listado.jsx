@@ -18,6 +18,11 @@ const Listado = ({addOrRemove}) => {
   //console.log (token);
  
   useEffect(() => {
+
+    if(!token){
+      navigate("/")
+    }
+
     const endPoint = "https://api.themoviedb.org/3/discover/movie?api_key=c7be01a86fd8912720fa05d1dec010a7&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate"
     
     axios.get(endPoint)
@@ -32,13 +37,12 @@ const Listado = ({addOrRemove}) => {
 
     })
 
-  }, [token])
+  }, [])
   
   return (
    <>
-    {!token && navigate("/")}
-    
-  <h2>Listado de Peliculas</h2>
+  
+   <h3 className="d-flex justify-content-center mt-3" style={{ fontFamily: 'sans-serif' , color: '#0d6efd ' }  }>Listado de Peliculas</h3>
     
   <Row xs={1} md={1} sm={1} className="g-4 mt-2 m-5 justify-content-center ">
           {movieList.map((movie) => (

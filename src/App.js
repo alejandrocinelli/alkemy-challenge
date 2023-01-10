@@ -9,6 +9,7 @@ import Detalle from "./componenst/Detalle";
 import Resultados from "./componenst/Resultados";
 import Favoritos from "./componenst/Favoritos";
 import { useEffect, useState } from "react";
+import Carousel2 from "./componenst/Carousel2";
 
 function App() {
   
@@ -44,7 +45,7 @@ function App() {
    const imgUrl = parent.querySelector('img').getAttribute('src');
    const title = parent.querySelector('h5').textContent;
    const overview = parent.querySelector('p').textContent;
-   const id = parent.querySelector('button').getAttribute('dataMovieId');
+   const id = parent.querySelector('button').getAttribute('datamovieid');
      
    const movieData = { imgUrl, title, overview, id };
   
@@ -53,22 +54,22 @@ function App() {
    if(!movieIsInFav){
       tempMoviesFav.push(movieData);
       localStorage.setItem('favoritos', JSON.stringify(tempMoviesFav));
-      console.log('producto agregado a favoritos');
+      //console.log('producto agregado a favoritos');
       setFavoritos(tempMoviesFav);
    }
    else{
       tempMoviesFav = tempMoviesFav.filter(movie => movie.id !== movieData.id);
       localStorage.setItem('favoritos', JSON.stringify(tempMoviesFav));
-      console.log('producto eliminado de favoritos');
+      //console.log('producto eliminado de favoritos');
       setFavoritos(tempMoviesFav);
    }
    
-   console.log(localStorage.getItem('favoritos'));
+   //console.log(localStorage.getItem('favoritos'));
    
  }
 
   return (
-    <div className="container-fluid ">
+    <div className="container-fluid " id="appCss">
       <BrowserRouter>
       <Header favoritos={favoritos}/>
       <Routes>
@@ -77,9 +78,10 @@ function App() {
       <Route path="/detalle" element={<Detalle/>}/>
       <Route path="/resultados" element={<Resultados favoritos={favoritos} addOrRemove={addOrRemove}/>}/>
       <Route path="/favoritos" element={<Favoritos favoritos={favoritos} addOrRemove={addOrRemove}/>}/>
-     
-     </Routes>
-     <Footer/>
+      </Routes>
+    
+      <Carousel2/>
+      <Footer/>
       </BrowserRouter>
     </div>
 

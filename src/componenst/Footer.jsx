@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="">
       <nav>
         <ul>
-            <li> <a href="http://instagram.com" rel="noopener noreferrer">IG</a></li>
+            <li> <a href="http://instagram.com" >IG</a></li>
             <li><a href="http://instagram.com">Facebock</a></li>
             <li><a href="http://instagram.com">TikTok</a></li>
             <li>boton</li>

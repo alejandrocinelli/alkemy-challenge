@@ -1,21 +1,26 @@
-import { useState, useEffect } from "react";
-import { Link} from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
+import { useEffect, useState } from "react";
 
 const Favoritos = ({addOrRemove, favoritos}) => {
- /* const [favoritos, setFavoritos] = useState([]);
 
+  const navigate = useNavigate();
+
+  
+
+ 
   useEffect(() => {
-    const favoritosFromLocal = JSON.parse(
-      localStorage.getItem("favoritos") || "[]"
-    );
-    //console.log(favoritosFromLocal);
-    setFavoritos(favoritosFromLocal);
-  }, []);*/
+    let token = sessionStorage.getItem("token");
+    if(!token){
+     navigate("/")}
+
+  }, []);
 
   return (
+    <>
    
+    
         <Row xs={1} md={1} sm={1} className="g-4 mt-2 m-5 justify-content-center ">
           {favoritos.map((favorito) => (
             <Card style={{ width: "18rem" }} className="m-2"key={favorito.id} >
@@ -43,6 +48,7 @@ const Favoritos = ({addOrRemove, favoritos}) => {
             </Card>
           ))}
         </Row>
+    </>
      
   );
 };
