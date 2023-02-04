@@ -42,7 +42,7 @@ const Listado = ({addOrRemove}) => {
   return (
    <>
   
-   <h3 className="d-flex justify-content-center mt-3" style={{ fontFamily: 'sans-serif' , color: '#0d6efd ' }  }>Listado de Peliculas</h3>
+   <h3 className="d-flex justify-content-center mt-3" style={{ fontFamily: 'sans-serif' , color: '#0d6efd ' }  }>Listado de Peliculas mas vistas</h3>
     
   <Row xs={1} md={1} sm={1} className="g-4 mt-2 m-5 justify-content-center ">
           {movieList.map((movie) => (

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from "react";
 import { Button, Card, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+
 //import Carousel from 'react-bootstrap/Carousel';
 
 function Carousel2() {
@@ -26,7 +27,7 @@ return (
 
 <div className='container-sm d-flex justify-content-center mt-5  '  >
 
-<Carousel slidestoshow={4} className="d-block w-50 " infinite>
+<Carousel slidestoshow={4} dots slidesToScroll={4} speed className="d-block w-25 " infinite>
      
 
         {movieResult.map((movie) => ( 
@@ -52,7 +53,6 @@ return (
         ))}
       
         </Carousel>
-
 </div>
   );
 }

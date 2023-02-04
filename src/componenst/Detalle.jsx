@@ -1,6 +1,8 @@
 import { useNavigate} from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Card, Image, Button, Col , ListGroup} from "react-bootstrap";
 import axios from "axios";
+//import "../css/detailCard.css"
 
 const Detalle = () => {
     const navigate = useNavigate();
@@ -26,29 +28,31 @@ const Detalle = () => {
 
   return (
 
-    <>
+    <div className="d-flex justify-content-center mt-5 ">
     {!token && navigate("/")}
     {!movieDetail && <h1>Cargando...</h1>}
     {movieDetail && <>
     
-
-     <h2>Detalle de Pelicula</h2>
-     <div className="row">
-         <div className="col-4"> <img src={`https://image.tmdb.org/t/p/w500/${movieDetail.poster_path}`} className="card-img-top" alt="..." /> </div>
-      </div>
-      <div className="col-8">
-        <h3>{movieDetail.title}</h3>
-        <h5>reseña</h5>
-        <p>{movieDetail.overview}</p>
-      <ul>
-        {movieDetail.genres.map(genre => {
-            return <li key={genre.id}>{genre.name}</li>
-        })}
-      </ul>
-      </div>
+      <Col xs={6} md={5} lg={5} className=" ">
+    <Card className="my-3 " >
+      <Image src={`https://image.tmdb.org/t/p/w500/${movieDetail.poster_path}`} fluid />
+      <Card.Body>
+        <Card.Title>{movieDetail.title}</Card.Title>
+        <Card.Text>{movieDetail.overview}</Card.Text>
+        <ListGroup variant="">
+          {movieDetail.genres.map((genre) => (
+            <ListGroup.Item key={genre.id}>{genre.name}</ListGroup.Item>
+          ))}
+        </ListGroup>
+      </Card.Body>
+    </Card>
+  </Col>
+  
     </> 
      }
-    </> 
+
+
+    </div> 
    
   )
 }
