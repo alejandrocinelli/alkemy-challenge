@@ -25,9 +25,9 @@ console.log(movieResult)
 
 return (
 
-<div className='container-sm d-flex justify-content-center mt-5  '  >
+<div className=' d-flex justify-content-center mt-5  '  >
 
-<Carousel slidestoshow={4} dots slidesToScroll={4} speed className="d-block w-25 " infinite>
+<Carousel slidestoshow={4} dots slidesToScroll={4} speed className="d-block w-50 " infinite>
      
 
         {movieResult.map((movie) => ( 
@@ -36,12 +36,14 @@ return (
             <Card >
              <Card.Img variant="" 
               className="p-2 "
-             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                 alt={movie.title}        
+             />
             <Card.Body>
               <Card.Title className='d-flex justify-content-center' >
                 <Link
                   to={`/detalle?movieId=${movie.id}`}
-                  className="btn btn-primary"
+                  className="btn btn-primary m-2"
                 >
                   More Info
                 </Link>

@@ -79,10 +79,10 @@ function App() {
       <Route path="/resultados" element={<Resultados favoritos={favoritos} addOrRemove={addOrRemove}/>}/>
       <Route path="/favoritos" element={<Favoritos favoritos={favoritos} addOrRemove={addOrRemove}/>}/>
       </Routes>
-    
-      <Carousel2/>
-      <Footer/>
+        
+      
       </BrowserRouter>
+      <Footer className="mt-5"/>
     </div>
 
   );

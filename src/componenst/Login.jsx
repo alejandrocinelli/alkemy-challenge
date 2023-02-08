@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from "react";
 import swal from '@sweetalert/with-react'
 import { useNavigate } from "react-router-dom"
+import Carousel2 from './Carousel2';
 
 const Login = () => {
 
@@ -45,7 +46,7 @@ const Login = () => {
 
   return (
     <>
-<form className=' w-50 mx-auto mt-5' onSubmit={submitHandler}>
+<form className=' w-50 mx-auto mt-5 bg-light p-5 ' onSubmit={submitHandler}>
   <div className="mb-3 form-group form-group-sm">
     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -60,6 +61,8 @@ const Login = () => {
   
   <button type="submit" className="btn btn-primary">Login</button>
 </form>
+
+  <Carousel2 />
     </>
    
   )
